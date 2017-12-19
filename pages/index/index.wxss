@@ -1,0 +1,16 @@
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+.weui-cell{
+    padding: 12px;
+}
+
+.pinyin {
+  display: inline-block;
+  color: #666666;
+}
+
