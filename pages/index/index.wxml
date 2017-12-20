@@ -18,7 +18,7 @@
         </view>
         <view class="weui-panel weui-panel_access searchbar-result" wx:if="{{searchStr.length > 0}}">
             <view class="weui-panel__bd">
-                <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+                <navigator url="/pages/detail/detail" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
                     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
                         <view class="weui-media-box__title">
                           汉

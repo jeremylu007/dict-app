@@ -8,4 +8,5 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+  background-color: #f6f8f9;
 } 

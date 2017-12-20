@@ -1,0 +1,33 @@
+page, .page, .page__bd{
+    height: 100%;
+    background-color: #f6f8f9;
+}
+
+.page__bd{
+    padding-bottom: 0;
+}
+
+.weui-tab__content{
+}
+
+.dynamic-write {
+  width: 80px;
+  height: 80px;
+}
+
+.vivi .weui-panel {
+  margin: 20px 0;
+}
+
+.vivi .desc image {
+  width: 15px;
+  height: 15px;
+  margin: 0 3px;
+}
+
+.vivi .desc .weui-media-box__desc {
+  overflow: inherit;
+  text-overflow: inherit;
+  display: inherit;
+  line-height: inherit;
+}

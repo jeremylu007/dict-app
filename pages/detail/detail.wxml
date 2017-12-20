@@ -1,0 +1,51 @@
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content basic" hidden="{{activeIndex != 0}}">
+          <view class="weui-flex">
+            <view>
+              <image class="dynamic-write" src="{{wordInfo.dynamicWrite}}" />
+            </view>
+            <view class="weui-flex__item" style="margin-left: 10px;">
+              <view class="placeholder">{{ wordInfo.pinyin }}</view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-tab__content vivi" hidden="{{activeIndex != 1}}">
+          <view class="weui-panel">
+            <view class="weui-panel__hd">字形演变</view>
+            <view class="weui-panel__bd">
+              <view class="weui-media-box weui-media-box_text">
+                <image src="{{ wordInfo.viviInfo.evolveImgUrl }}" />
+              </view>
+            </view>
+          </view>
+          <view class="weui-panel desc">
+            <view class="weui-panel__hd">字源解说</view>
+            <view class="weui-panel__bd">
+              <view class="weui-media-box weui-media-box_text">
+                <view class="weui-media-box__desc">
+                  <block wx:for="{{wordInfo.viviInfo.desc}}">
+                    <image wx:if="{{item[0] === 'h'}}" src="{{item}}" />
+                    <text wx:else>{{item}}</text>
+                  </block>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">选项三的内容</view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 3}}">选项四的内容</view>
+      </view>
+    </view>
+  </view>
+</view>
