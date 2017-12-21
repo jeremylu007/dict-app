@@ -4,7 +4,7 @@ page, .page, .page__bd{
 }
 
 .page__bd{
-    padding-bottom: 0;
+    padding-bottom: 0;  
 }
 
 .weui-navbar {
@@ -22,12 +22,12 @@ page, .page, .page__bd{
 }
 
 .basic {
-  padding: 10px;
+  padding: 20px;
 }
 
-.dynamic-write {
-  width: 80px;
-  height: 80px;
+.basic .dynamic-write {
+  width: 130px;
+  height: 130px;
 }
 
 .vivi .evolve image {

@@ -7,7 +7,7 @@
             <view class="weui-navbar__title">{{item}}</view>
           </view>
         </block>
-        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+        <view class="weui-navbar__slider" style="width: {{sliderWidth}}px; left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
       </view>
       <view class="weui-tab__panel">
         <view class="weui-tab__content basic" hidden="{{activeIndex != 0}}">
@@ -15,8 +15,11 @@
             <view>
               <image class="dynamic-write" src="{{wordInfo.dynamicWrite}}" />
             </view>
-            <view class="weui-flex__item" style="margin-left: 10px;">
-              <view class="placeholder">{{ wordInfo.pinyin }}</view>
+            <view class="weui-flex__item" style="margin-left: 30px;">
+              <view class="placeholder">拼音：{{ wordInfo.pinyin }}</view>
+              <view class="placeholder">部首：{{ wordInfo.radical }}</view>
+              <view class="placeholder">笔画：{{ wordInfo.strokeOrder }}</view>
+              <view class="placeholder">笔画总数：{{ wordInfo.strokeCount }}</view>
             </view>
           </view>
         </view>
@@ -101,6 +104,18 @@
               <view class="weui-panel__bd">
                 <view class="weui-media-box weui-media-box_text">
                   <image wx:for="{{part.imgList}}" src="{{ item }}" />
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+        <view class="weui-tab__content zdic-calligraphy" hidden="{{activeIndex != 4}}">
+          <block wx:for="{{wordInfo.zdicCalligraphyInfo}}" wx:for-item="part">
+            <view wx:if="{{part.imgList.length > 0}}" class="weui-panel">
+              <view class="weui-panel__hd">{{part.title}}</view>
+              <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text">
+                  <image wx:for="{{part.imgList}}" src="{{ item.url }}" />
                 </view>
               </view>
             </view>
