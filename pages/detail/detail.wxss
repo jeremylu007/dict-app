@@ -7,7 +7,8 @@ page, .page, .page__bd{
     padding-bottom: 0;
 }
 
-.weui-tab__content{
+.weui-panel__hd {
+  color: #666;
 }
 
 .dynamic-write {
@@ -17,6 +18,18 @@ page, .page, .page__bd{
 
 .vivi .weui-panel {
   margin: 20px 0;
+}
+
+.vivi .evolve image {
+  width: 100%;
+  height: 70px;
+}
+
+.vivi .desc .text, .vivi .explain {
+  color: #666;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
 }
 
 .vivi .desc image {
@@ -30,4 +43,32 @@ page, .page, .page__bd{
   text-overflow: inherit;
   display: inherit;
   line-height: inherit;
+}
+
+.vivi .explain {
+  border-top:1rpx solid #e5e5e5;
+  padding-top: 5px;
+}
+
+.vivi .explain .title {
+  color: #666;
+}
+
+.vivi .explain .text {
+  padding-left: 20px;
+  display: block;
+}
+
+.vivi .detail .examples {
+  padding-left: 15px;
+}
+
+.vivi .detail .title {
+  padding-top: 10px;
+  color: #666;
+}
+
+.vivi .detail .examples .example {
+  padding-top: 5px;
+  color: #666;
 }

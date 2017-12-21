@@ -21,11 +21,11 @@
           </view>
         </view>
         <view class="weui-tab__content vivi" hidden="{{activeIndex != 1}}">
-          <view class="weui-panel">
+          <view class="weui-panel evolve">
             <view class="weui-panel__hd">字形演变</view>
             <view class="weui-panel__bd">
               <view class="weui-media-box weui-media-box_text">
-                <image src="{{ wordInfo.viviInfo.evolveImgUrl }}" />
+                <image src="{{ wordInfo.viviInfo.evolveImgUrl }}" bindtap="previewViviImg" />
               </view>
             </view>
           </view>
@@ -33,11 +33,38 @@
             <view class="weui-panel__hd">字源解说</view>
             <view class="weui-panel__bd">
               <view class="weui-media-box weui-media-box_text">
-                <view class="weui-media-box__desc">
+                <view class="weui-media-box__desc text">
                   <block wx:for="{{wordInfo.viviInfo.desc}}">
                     <image wx:if="{{item[0] === 'h'}}" src="{{item}}" />
                     <text wx:else>{{item}}</text>
                   </block>
+                </view>
+                <view class="weui-media-box__desc explain">
+                  <view wx:for="{{wordInfo.viviInfo.explain}}">
+                    <text class="title">{{item.title}}: </text>
+                    <text class="text">
+                      <block wx:for="{{item.desc}}" wx:for-item="x">
+                        <image wx:if="{{x[0] === 'h'}}" src="{{x}}" />
+                        <text wx:else>{{x}}</text>
+                      </block>
+                    </text>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="weui-panel detail">
+            <view class="weui-panel__hd">词汇分类</view>
+            <view class="weui-panel__bd">
+              <view class="weui-media-box weui-media-box_text">
+                <view wx:for="{{wordInfo.viviInfo.detail}}" wx:for-item="part" class="weui-media-box__desc part">
+                  <view class="title">{{index + 1}}. {{part.title}}</view>
+                  <view class="examples">
+                    <view wx:for="{{part.exampleList}}" wx:for-item="x" class="example">
+                      <text class="e-title">{{x.example}}</text> —
+                      <text class="text">{{x.source}}</text>
+                    </view>
+                  </view>
                 </view>
               </view>
             </view>

@@ -7,6 +7,7 @@ Page({
     sliderOffset: -8,
     sliderLeft: 0,
   },
+
   onLoad: function () {
     var that = this
     
@@ -18,6 +19,13 @@ Page({
       }
     });
   },
+
+  previewViviImg() {
+    wx.previewImage({
+      urls: [this.data.wordInfo.viviInfo.evolveImgUrl]
+    })
+  },
+
   tabClick: function (e) {
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft - 8,
