@@ -7,17 +7,27 @@ page, .page, .page__bd{
     padding-bottom: 0;
 }
 
+.weui-navbar {
+  background: #fff;
+}
+
+.weui-panel:first-child,
+.weui-panel {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .weui-panel__hd {
   color: #666;
+}
+
+.basic {
+  padding: 10px;
 }
 
 .dynamic-write {
   width: 80px;
   height: 80px;
-}
-
-.vivi .weui-panel {
-  margin: 20px 0;
 }
 
 .vivi .evolve image {
@@ -71,4 +81,27 @@ page, .page, .page__bd{
 .vivi .detail .examples .example {
   padding-top: 5px;
   color: #666;
+}
+
+.xiao image {
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+}
+
+.xiao .img .part {
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 14px;
+}
+
+.xiao .explain {
+  font-size: 13px;
+}
+
+.uncle image {
+  width: 50px;
+  height: 50px;
+  padding: 5px;
 }

@@ -3,6 +3,9 @@ Page({
     inputShowed: false,
     searchStr: ""
   },
+  onLoad() {
+    wx.setNavigationBarTitle({title: '我要查汉字'})
+  },
   showInput: function () {
     this.setData({
       inputShowed: true
@@ -22,6 +25,10 @@ Page({
   inputTyping: function (e) {
     this.setData({
       searchStr: e.detail.value
-    });
+    }); 
+  },
+
+  search: function() {
+    wx.navigateTo({ url: '/pages/detail/detail?word=' + this.data.searchStr})
   }
 });

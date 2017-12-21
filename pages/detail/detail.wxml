@@ -70,8 +70,42 @@
             </view>
           </view>
         </view>
-        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">选项三的内容</view>
-        <view class="weui-tab__content" hidden="{{activeIndex != 3}}">选项四的内容</view>
+        <view class="weui-tab__content xiao" hidden="{{activeIndex != 2}}">
+          <view class="weui-panel img">
+            <view class="weui-panel__hd">字形演变</view>
+            <view class="weui-panel__bd">
+              <view class="weui-media-box weui-media-box_text">
+                <view wx:for="{{wordInfo.xiaoInfo.imgList}}" class="part">
+                  <image src="{{item.url}}" />
+                  <view class="desc">{{item.desc}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="weui-panel explain">
+            <view class="weui-panel__hd">字源解说</view>
+            <view class="weui-panel__bd">
+              <view class="weui-media-box weui-media-box_text">
+                <view wx:for="{{wordInfo.xiaoInfo.explain}}" class="part">
+                  <text class="title">{{item.title}}：</text>
+                  <text class="desc">{{item.desc}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-tab__content uncle" hidden="{{activeIndex != 3}}">
+          <block wx:for="{{wordInfo.uncleInfo}}" wx:for-item="part">
+            <view wx:if="{{part.imgList.length > 0}}" class="weui-panel">
+              <view class="weui-panel__hd">{{part.title}}</view>
+              <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text">
+                  <image wx:for="{{part.imgList}}" src="{{ item }}" />
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
       </view>
     </view>
   </view>
