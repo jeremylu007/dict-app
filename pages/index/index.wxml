@@ -29,5 +29,30 @@
                 </navigator>
             </view>
         </view>
+        <view class="thanks">
+              本小程序数据来自于以下网站，特此感谢！
+              <view class="website-list">
+                <view class="website">
+                  <text class="title">象形字典</text>
+                  <text class="site">http://vividict.com</text>
+                </view>
+                <view class="website">
+                  <text class="title">汉典</text>
+                  <text class="site">http://www.zdic.net</text>
+                </view>
+                <view class="website">
+                  <text class="title">小学堂</text>
+                  <text class="site">http://xiaoxue.iis.sinica.edu.tw</text>
+                </view>
+                <view class="website">
+                  <text class="title">汉字叔叔</text>
+                  <text class="site">http://hanziyuan.net</text>
+                </view>
+                <view class="website">
+                  <text class="title">笔顺网</text>
+                  <text class="site">http://bishun.strokeorder.info/</text>
+                </view>
+              </view>
+            </view>
     </view>
 </view>

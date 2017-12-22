@@ -14,3 +14,23 @@
   color: #666666;
 }
 
+.thanks {
+  width: 70%;
+  margin: auto;
+  margin-top: 50%;
+  font-size: 14px;
+}
+
+.website-list {
+  margin-top: 10px;
+  color: #666;
+}
+
+ .website .title {
+  margin-right: 10px;
+}
+
+.website .title {
+  color: #666;
+}
+
