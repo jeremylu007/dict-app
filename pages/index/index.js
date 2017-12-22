@@ -19,7 +19,8 @@ Page({
   },
   clearInput: function () {
     this.setData({
-      searchStr: ""
+      searchStr: "",
+      inputShowed: true
     });
   },
   inputTyping: function (e) {

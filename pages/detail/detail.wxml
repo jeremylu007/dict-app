@@ -15,7 +15,7 @@
             <view>
               <image class="dynamic-write" src="{{wordInfo.dynamicWrite}}" />
             </view>
-            <view class="weui-flex__item" style="margin-left: 30px;">
+            <view class="weui-flex__item desc">
               <view class="placeholder">拼音：{{ wordInfo.pinyin }}</view>
               <view class="placeholder">部首：{{ wordInfo.radical }}</view>
               <view class="placeholder">笔画：{{ wordInfo.strokeOrder }}</view>
@@ -109,7 +109,7 @@
             </view>
           </block>
         </view>
-        <view class="weui-tab__content zdic-calligraphy" hidden="{{activeIndex != 4}}">
+        <!-- <view class="weui-tab__content zdic-calligraphy" hidden="{{activeIndex != 4}}">
           <block wx:for="{{wordInfo.zdicCalligraphyInfo}}" wx:for-item="part">
             <view wx:if="{{part.imgList.length > 0}}" class="weui-panel">
               <view class="weui-panel__hd">{{part.title}}</view>
@@ -120,7 +120,7 @@
               </view>
             </view>
           </block>
-        </view>
+        </view> -->
       </view>
     </view>
   </view>

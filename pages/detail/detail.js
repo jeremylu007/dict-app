@@ -4,7 +4,7 @@ Page({
     wordInfo: {},
     tabs: ["基本信息", "象形字典", "小学堂", "汉字叔叔"],
     activeIndex: 0,
-    sliderWidth: 100,
+    sliderWidth: 98,
     sliderOffset: 0,
     sliderLeft: 0,
   },
