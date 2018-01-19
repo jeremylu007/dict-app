@@ -28,7 +28,7 @@
             <view class="weui-panel__hd">字形演变</view>
             <view class="weui-panel__bd">
               <view class="weui-media-box weui-media-box_text">
-                <image src="{{ wordInfo.viviInfo.evolveImgUrl }}" bindtap="previewViviImg" />
+                <image src="{{ wordInfo.viviInfo.evolveImgUrl }}" data-url="{{ wordInfo.viviInfo.evolveImgUrl }}" bindtap="previewViviImg" />
               </view>
             </view>
           </view>
@@ -56,6 +56,14 @@
               </view>
             </view>
           </view>
+          <view class="weui-panel evolve">
+            <view class="weui-panel__hd">引申线索</view>
+            <view class="weui-panel__bd">
+              <view class="weui-media-box weui-media-box_text">
+                <image src="{{ wordInfo.viviInfo.clueImgUrl }}" data-url="{{ wordInfo.viviInfo.clueImgUrl }}" bindtap="previewViviImg" />
+              </view>
+            </view>
+          </view>
           <view class="weui-panel detail">
             <view class="weui-panel__hd">词汇分类</view>
             <view class="weui-panel__bd">
@@ -74,53 +82,71 @@
           </view>
         </view>
         <view class="weui-tab__content xiao" hidden="{{activeIndex != 2}}">
-          <view class="weui-panel img">
-            <view class="weui-panel__hd">字形演变</view>
-            <view class="weui-panel__bd">
-              <view class="weui-media-box weui-media-box_text">
-                <view wx:for="{{wordInfo.xiaoInfo.imgList}}" class="part">
-                  <image src="{{item.url}}" />
-                  <view class="desc">{{item.desc}}</view>
+         <view wx:if="{{wordInfo.xiaoEmpty}}" class="empty-data">
+            <view>未收集到小学堂里的数据 :(</view>
+          </view>
+          <view wx:else>
+            <view class="weui-panel img">
+              <view class="weui-panel__hd">字形演变</view>
+              <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text">
+                  <view wx:for="{{wordInfo.xiaoInfo.imgList}}" class="part">
+                    <image src="{{item.url}}" />
+                    <view class="desc">{{item.desc}}</view>
+                  </view>
                 </view>
               </view>
             </view>
-          </view>
-          <view class="weui-panel explain">
-            <view class="weui-panel__hd">字源解说</view>
-            <view class="weui-panel__bd">
-              <view class="weui-media-box weui-media-box_text">
-                <view wx:for="{{wordInfo.xiaoInfo.explain}}" class="part">
-                  <text class="title">{{item.title}}：</text>
-                  <text class="desc">{{item.desc}}</text>
+            <view class="weui-panel explain">
+              <view class="weui-panel__hd">字源解说</view>
+              <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text">
+                  <view wx:for="{{wordInfo.xiaoInfo.explain}}" class="part">
+                    <text class="title">{{item.title}}：</text>
+                    <text class="desc">{{item.desc}}</text>
+                  </view>
                 </view>
               </view>
             </view>
           </view>
         </view>
         <view class="weui-tab__content uncle" hidden="{{activeIndex != 3}}">
-          <block wx:for="{{wordInfo.uncleInfo}}" wx:for-item="part">
-            <view wx:if="{{part.imgList.length > 0}}" class="weui-panel">
-              <view class="weui-panel__hd">{{part.title}}</view>
-              <view class="weui-panel__bd">
-                <view class="weui-media-box weui-media-box_text">
-                  <image wx:for="{{part.imgList}}" src="{{ item }}" />
+        <view wx:if="{{wordInfo.uncleEmpty}}" class="empty-data">
+            <view>未收集到汉字叔叔里的数据 :(</view>
+          </view>
+          <view wx:else>
+            <block wx:for="{{wordInfo.uncleInfo}}" wx:for-item="part">
+              <view wx:if="{{part.imgList.length > 0}}" class="weui-panel">
+                <view class="weui-panel__hd">{{part.title}}</view>
+                <view class="weui-panel__bd">
+                  <view class="weui-media-box weui-media-box_text">
+                    <image wx:for="{{part.imgList}}" src="{{ item }}" />
+                  </view>
                 </view>
               </view>
-            </view>
-          </block>
+            </block>
+          </view>
         </view>
-        <!-- <view class="weui-tab__content zdic-calligraphy" hidden="{{activeIndex != 4}}">
-          <block wx:for="{{wordInfo.zdicCalligraphyInfo}}" wx:for-item="part">
-            <view wx:if="{{part.imgList.length > 0}}" class="weui-panel">
-              <view class="weui-panel__hd">{{part.title}}</view>
-              <view class="weui-panel__bd">
-                <view class="weui-media-box weui-media-box_text">
-                  <image wx:for="{{part.imgList}}" src="{{ item.url }}" />
-                </view>
+         <view class="weui-tab__content zdic-calligraphy" hidden="{{activeIndex != 4}}">
+         <view wx:if="{{wordInfo.zdicCalligraphyEmpty}}" class="empty-data">
+            <view>未收集到汉典书法里的数据 :(</view>
+          </view>
+          <view wx:else>
+            <view  wx:for="{{wordInfo.zdicCalligraphyInfo}}" wx:for-item="part">
+              <view wx:if="{{part.imgList.length > 0}}" class="weui-panel">
+                <view class="weui-panel__hd">{{part.title}}书</view>
+                <view class="weui-panel__bd">
+                  <view class="weui-media-box weui-media-box_text">
+                    <view wx:for="{{part.imgList}}" class="item">
+                      <image src="{{ item.url }}"  />
+                      <text class="title">{{ item.title }}</text>
+                    </view>
+                  </view>
+                 </view>
+              </view>
               </view>
             </view>
-          </block>
-        </view> -->
+        </view> 
       </view>
     </view>
   </view>

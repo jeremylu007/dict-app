@@ -9,11 +9,6 @@
     padding: 12px;
 }
 
-.pinyin {
-  display: inline-block;
-  color: #666666;
-}
-
 .thanks {
   width: 70%;
   margin: auto;
@@ -33,4 +28,17 @@
 .website .title {
   color: #666;
 }
+
+.word-list .item .name,
+  .word-list .item .pinyin {
+  display: inline-block;
+}
+
+.word-list .item .name {
+  font-size: 20px;
+}
+
+ .word-list .item .pinyin {
+    color: #666666;
+ }
 

@@ -1,8 +1,7 @@
-
 Page({
   data: {
     wordInfo: {},
-    tabs: ["基本信息", "象形字典", "小学堂", "汉字叔叔"],
+    tabs: ["基本信息", "象形字典", "小学堂", "汉字叔叔", "汉典书法"],
     activeIndex: 0,
     sliderWidth: 80,
     sliderOffset: 0,
@@ -11,14 +10,15 @@ Page({
 
   onLoad: function(params) {
     wx.showLoading({ title: '加载中' })
-    // params.word = '兵' 
-    wx.setNavigationBarTitle({ title: '“' + params.word + '”字的解释' })
+    // params.word = '畔'
+    wx.setNavigationBarTitle({ title: '“' + params.name + '”字的解释' })
     var that = this
     wx.request({
-      url: 'https://vividict.cn/words?searchStr=' + params.word,
+      url: 'https://vividict.cn/words/' + params.id,
+      //url: 'http://localhost:3006/words/' + params.id,
       success: function (res) {
         wx.hideLoading()
-        var wordInfo = res.data.data[0]
+        var wordInfo = res.data.data
         if(!wordInfo) {
           wx.showToast({ title: '该字尚未收录:(' })
         } else {
@@ -35,9 +35,16 @@ Page({
     });
   },
 
-  previewViviImg() {
+  previewViviImg(current) {
+    if(current && current.target) {
+      current = current.target.dataset.url
+    }
     wx.previewImage({
-      urls: [this.data.wordInfo.viviInfo.evolveImgUrl]
+      current: current,
+      urls: [
+        this.data.wordInfo.viviInfo.evolveImgUrl,
+        this.data.wordInfo.viviInfo.clueImgUrl
+      ]
     })
   },
 

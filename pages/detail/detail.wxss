@@ -119,3 +119,32 @@ page, .page, .page__bd{
   height: 50px;
   padding: 5px;
 }
+
+.zdic-calligraphy .item {
+  margin: 5px 8px;
+  float: left;
+}
+
+.zdic-calligraphy .item image {
+  width: 55px;
+  height: 61px;
+  padding: 5px;
+  background: #eeeeee;
+  border: solid 1px #dddddd;
+  display: block;
+}
+
+.zdic-calligraphy .item .title {
+  margin-top:5px;
+  display: block;
+  font-size: 10px;
+  text-align: center;
+  color: #666666;
+}
+
+.empty-data {
+  margin-top:50px;
+  text-align:center;
+  font-size:12px;
+  color:#999999;
+}

@@ -1,58 +1,67 @@
 <view class="page">
-    <view class="page__bd">
-        <view class="weui-search-bar">
-            <view class="weui-search-bar__form">
-                <view class="weui-search-bar__box">
-                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                    <input type="text" class="weui-search-bar__input" value="{{searchStr}}" focus="{{inputShowed}}" bindinput="inputTyping" confirm-type="search" bindconfirm="search" />
-                    <view class="weui-icon-clear" wx:if="{{searchStr.length > 0}}" bindtap="clearInput">
-                        <icon type="clear" size="14"></icon>
-                    </view>
-                </view>
-                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
-                    <icon class="weui-icon-search" type="search" size="14"></icon>
-                    <view class="weui-search-bar__text">输入单个汉字</view>
-                </label>
-            </view>
-            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+  <view class="page__bd">
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" value="{{searchStr}}" focus="{{inputShowed}}" bindinput="inputTyping" confirm-type="search" bindconfirm="search" />
+          <view class="weui-icon-clear" wx:if="{{searchStr.length > 0}}" bindtap="clearInput">
+            <icon type="clear" size="14"></icon>
+          </view>
         </view>
-        <view class="weui-panel weui-panel_access searchbar-result" wx:if="{{false}}">
-            <view class="weui-panel__bd">
-                <navigator url="/pages/detail/detail?word=汉" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
-                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-                        <view class="weui-media-box__title">
-                          汉
-                          <view class="pinyin" style="margin-left: 5px;">han</view>
-                        </view>
-                        <view class="weui-media-box__desc">漢，漾也。東爲滄浪水。从水，難省聲。</view>
-                    </view>
-                </navigator>
-            </view>
-        </view>
-        <view class="thanks">
-              本小程序数据来自于以下网站，特此感谢！
-              <view class="website-list">
-                <view class="website">
-                  <text class="title">象形字典</text>
-                  <text class="site">http://vividict.com</text>
-                </view>
-                <view class="website">
-                  <text class="title">汉典</text>
-                  <text class="site">http://www.zdic.net</text>
-                </view>
-                <view class="website">
-                  <text class="title">小学堂</text>
-                  <text class="site">http://xiaoxue.iis.sinica.edu.tw</text>
-                </view>
-                <view class="website">
-                  <text class="title">汉字叔叔</text>
-                  <text class="site">http://hanziyuan.net</text>
-                </view>
-                <view class="website">
-                  <text class="title">笔顺网</text>
-                  <text class="site">http://bishun.strokeorder.info/</text>
-                </view>
-              </view>
-            </view>
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+          <icon class="weui-icon-search" type="search" size="14"></icon>
+          <view class="weui-search-bar__text">输入单个汉字</view>
+        </label>
+      </view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
     </view>
+    <view class="weui-panel weui-panel_access searchbar-result">
+      <view class="weui-panel__bd">
+        <view class="weui-loadmore" wx:if="{{searching}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view class="weui-loadmore weui-loadmore_line" wx:if="{{inputShowed && !prepareSearch && !searching && !wordList.length }}">
+          <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+        </view>
+        <view class="word-list" wx:else>
+          <navigator wx:for="{{wordList}}" url="{{'/pages/detail/detail?id=' + item.id + '&name=' + item.name}}" class="weui-media-box weui-media-box_appmsg item" hover-class="weui-cell_active">
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title">
+                <view class="name">{{item.name}}</view>
+                <view class="pinyin" style="margin-left: 5px;">{{item.pinyin || ''}}</view>
+              </view>
+              <view class="weui-media-box__desc">{{item.descr || ''}}</view>
+            </view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+    <view class="thanks" wx:if="{{!inputShowed}}">
+      本小程序数据来自于以下网站，特此感谢！
+      <view class="website-list">
+        <view class="website">
+          <text class="title">象形字典</text>
+          <text class="site">http://vividict.com</text>
+        </view>
+        <view class="website">
+          <text class="title">汉典</text>
+          <text class="site">http://www.zdic.net</text>
+        </view>
+        <view class="website">
+          <text class="title">小学堂</text>
+          <text class="site">http://xiaoxue.iis.sinica.edu.tw</text>
+        </view>
+        <view class="website">
+          <text class="title">汉字叔叔</text>
+          <text class="site">http://hanziyuan.net</text>
+        </view>
+        <view class="website">
+          <text class="title">笔顺网</text>
+          <text class="site">http://bishun.strokeorder.info/</text>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
