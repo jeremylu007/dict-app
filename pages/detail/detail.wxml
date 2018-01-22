@@ -11,15 +11,30 @@
       </view>
       <view class="weui-tab__panel">
         <view class="weui-tab__content basic" hidden="{{activeIndex != 0}}">
-          <view class="weui-flex">
-            <view>
-              <image class="dynamic-write" src="{{wordInfo.dynamicWrite}}" />
+          <view class="weui-panel basic-info">
+            <view class="weui-panel__hd">基本信息</view>
+            <view class="weui-panel__bd">
+              <view class="weui-media-box weui-media-box_text">
+                <view class="weui-flex">
+                  <view>
+                    <image class="dynamic-write" src="{{wordInfo.dynamicWrite}}" />
+                  </view>
+                  <view class="weui-flex__item desc">
+                    <view class="placeholder">拼音：{{ wordInfo.pinyin }}</view>
+                    <view class="placeholder">部首：{{ wordInfo.radical }}</view>
+                    <view class="placeholder">笔画：{{ wordInfo.strokeOrder }}</view>
+                    <view class="placeholder">笔画总数：{{ wordInfo.strokeCount }}</view>
+                  </view>
+                </view>
+              </view>
             </view>
-            <view class="weui-flex__item desc">
-              <view class="placeholder">拼音：{{ wordInfo.pinyin }}</view>
-              <view class="placeholder">部首：{{ wordInfo.radical }}</view>
-              <view class="placeholder">笔画：{{ wordInfo.strokeOrder }}</view>
-              <view class="placeholder">笔画总数：{{ wordInfo.strokeCount }}</view>
+          </view>
+          <view class="weui-panel desc">
+            <view class="weui-panel__hd">说文解字</view>
+            <view class="weui-panel__bd">
+              <view class="weui-media-box weui-media-box_text">
+                <view class="text">{{wordInfo.descr}}</view>
+              </view>
             </view>
           </view>
         </view>
@@ -35,22 +50,27 @@
           <view class="weui-panel desc">
             <view class="weui-panel__hd">字源解说</view>
             <view class="weui-panel__bd">
-              <view class="weui-media-box weui-media-box_text">
-                <view class="weui-media-box__desc text">
-                  <block wx:for="{{wordInfo.viviInfo.desc}}">
-                    <image wx:if="{{item[0] === 'h'}}" src="{{item}}" />
-                    <text wx:else>{{item}}</text>
-                  </block>
-                </view>
-                <view class="weui-media-box__desc explain">
-                  <view wx:for="{{wordInfo.viviInfo.explain}}">
-                    <text class="title">{{item.title}}: </text>
-                    <text class="text">
+              <view wx:if="{{!wordInfo.viviId}}" class="empty-data">
+                <view>未收集到小学堂里的数据 :(</view>
+              </view>
+              <view wx:else>
+                <view class="weui-media-box weui-media-box_text">
+                  <view class="weui-media-box__desc text">
+                    <block wx:for="{{wordInfo.viviInfo.desc}}">
+                      <image wx:if="{{item[0] === 'h'}}" src="{{item}}" />
+                      <text wx:else>{{item}}</text>
+                    </block>
+                  </view>
+                  <view class="weui-media-box__desc explain">
+                    <view wx:for="{{wordInfo.viviInfo.explain}}">
+                      <text class="title">{{item.title}}: </text>
+                      <text class="text">
                       <block wx:for="{{item.desc}}" wx:for-item="x">
                         <image wx:if="{{x[0] === 'h'}}" src="{{x}}" />
                         <text wx:else>{{x}}</text>
                       </block>
-                    </text>
+                      </text>
+                    </view>
                   </view>
                 </view>
               </view>
@@ -82,7 +102,7 @@
           </view>
         </view>
         <view class="weui-tab__content xiao" hidden="{{activeIndex != 2}}">
-         <view wx:if="{{wordInfo.xiaoEmpty}}" class="empty-data">
+          <view wx:if="{{wordInfo.xiaoEmpty}}" class="empty-data">
             <view>未收集到小学堂里的数据 :(</view>
           </view>
           <view wx:else>
@@ -111,7 +131,7 @@
           </view>
         </view>
         <view class="weui-tab__content uncle" hidden="{{activeIndex != 3}}">
-        <view wx:if="{{wordInfo.uncleEmpty}}" class="empty-data">
+          <view wx:if="{{wordInfo.uncleEmpty}}" class="empty-data">
             <view>未收集到汉字叔叔里的数据 :(</view>
           </view>
           <view wx:else>
@@ -127,27 +147,30 @@
             </block>
           </view>
         </view>
-         <view class="weui-tab__content zdic-calligraphy" hidden="{{activeIndex != 4}}">
-         <view wx:if="{{wordInfo.zdicCalligraphyEmpty}}" class="empty-data">
+        <view class="weui-tab__content zdic-calligraphy" hidden="{{activeIndex != 4}}">
+          <view wx:if="{{wordInfo.zdicCalligraphyEmpty}}" class="empty-data">
             <view>未收集到汉典书法里的数据 :(</view>
           </view>
           <view wx:else>
-            <view  wx:for="{{wordInfo.zdicCalligraphyInfo}}" wx:for-item="part">
+            <view wx:for="{{wordInfo.zdicCalligraphyInfo}}" wx:for-item="part">
               <view wx:if="{{part.imgList.length > 0}}" class="weui-panel">
                 <view class="weui-panel__hd">{{part.title}}书</view>
                 <view class="weui-panel__bd">
                   <view class="weui-media-box weui-media-box_text">
                     <view wx:for="{{part.imgList}}" class="item">
-                      <image src="{{ item.url }}"  />
+                      <image src="{{ item.url }}" />
                       <text class="title">{{ item.title }}</text>
                     </view>
                   </view>
-                 </view>
-              </view>
+                </view>
               </view>
             </view>
-        </view> 
+          </view>
+        </view>
       </view>
     </view>
+    <button class="contact" open-type="contact">
+      <image src="http://static.vividict.cn/images/wechat_icon.png"></image>
+    </button>
   </view>
 </view>

@@ -10,7 +10,8 @@ Page({
 
   onLoad: function(params) {
     wx.showLoading({ title: '加载中' })
-    // params.word = '畔'
+    // console.log(params)
+    // params = { id: "1156", name: "我" }
     wx.setNavigationBarTitle({ title: '“' + params.name + '”字的解释' })
     var that = this
     wx.request({

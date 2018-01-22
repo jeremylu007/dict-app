@@ -18,20 +18,23 @@ page, .page, .page__bd{
 }
 
 .weui-panel__hd {
-  color: #666;
+  color:#333;
+  font-size:14px;
 }
 
-.basic {
-  padding: 20px;
+.weui-media-box.weui-media-box_text {
+  color: #666666;
 }
 
-.basic .dynamic-write {
-  width: 130px;
-  height: 130px;
+.basic-info .dynamic-write {
+  width: 110px;
+  height: 110px;
 }
 
-.basic .desc {
+.basic .basic-info .desc {
   margin-left: 20px;
+  color:#666666;
+  font-size:13px;
 }
 
 .basic .desc .placeholder:not(:first-child) {
@@ -43,11 +46,9 @@ page, .page, .page__bd{
   height: 70px;
 }
 
-.vivi .desc .text, .vivi .explain {
+.basic .desc .text, .vivi .desc .text, .vivi .explain {
+  font-size: 13px;
   color: #666;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
 }
 
 .vivi .desc image {
@@ -61,11 +62,12 @@ page, .page, .page__bd{
   text-overflow: inherit;
   display: inherit;
   line-height: inherit;
+  padding-bottom: 10px;
 }
 
 .vivi .explain {
   border-top:1rpx solid #e5e5e5;
-  padding-top: 5px;
+  padding-top: 10px;
 }
 
 .vivi .explain .title {

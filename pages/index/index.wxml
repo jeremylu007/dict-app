@@ -11,7 +11,7 @@
         </view>
         <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
           <icon class="weui-icon-search" type="search" size="14"></icon>
-          <view class="weui-search-bar__text">输入单个汉字</view>
+          <view class="weui-search-bar__text">输入一个或多个汉字</view>
         </label>
       </view>
       <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
@@ -63,5 +63,8 @@
         </view>
       </view>
     </view>
+    <button class="contact" open-type="contact">
+     <image src="http://static.vividict.cn/images/wechat_icon.png"></image>
+    </button>
   </view>
 </view>

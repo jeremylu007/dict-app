@@ -15,6 +15,10 @@ Page({
       inputShowed: true,
       prepareSearch: true,
     });
+
+    // wx.hideTabBar({
+    //   aniamtion: true
+    // })
   },
   hideInput: function () {
     this.setData({
@@ -40,7 +44,10 @@ Page({
     var that = this
     var searchStr = this.data.searchStr
 
-    that.setData({ searching: true })
+    that.setData({
+      searching: true,
+      wordList: []
+    })
     wx.request({
       url: 'https://vividict.cn/words/search?searchStr=' + searchStr,
       //url: 'http://localhost:3006/words/search?searchStr=' + searchStr,
