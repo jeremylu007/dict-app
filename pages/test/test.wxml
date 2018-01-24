@@ -1,0 +1,29 @@
+<!--scroll-view组件-->
+<block>
+    <!--横向滚动-->
+    <view class="menu">
+        <scroll-view scroll-x="true" class="top-nav">
+            <view class="top_btn top_btn_select">栏目1</view>
+            <view class="top_btn">栏目2</view>
+            <view class="top_btn">栏目3</view>
+            <view class="top_btn">栏目4</view>
+            <view class="top_btn">栏目5</view>
+            <view class="top_btn">栏目6</view>
+            <view class="top_btn">栏目7</view>
+            <view class="top_btn">栏目8</view>
+        </scroll-view>
+    </view>
+    
+    <!--竖向滚动-->
+    <scroll-view scroll-y="true" class="content">
+        <view class="cell">cell1</view>
+        <view class="cell">cell2</view>
+        <view class="cell">cell3</view>
+        <view class="cell">cell4</view>
+        <view class="cell">cell5</view>
+        <view class="cell">cell6</view>
+        <view class="cell">cell7</view>
+        <view class="cell">cell8</view>
+    </scroll-view>
+   
+</block>

@@ -1,0 +1,48 @@
+/*
+scroll-view 组件样式
+*/
+/*
+水平
+*/
+.menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  background: #fff;
+  border-top:#eee solid 1px;
+  border-bottom:#eee solid 1px;
+}
+.top-nav{
+    white-space: nowrap;
+    display: flex;
+}
+.top_btn {
+    display: inline-block;
+    margin: 10px;
+    font-size: 1rem;
+    color: gray;
+}
+.top_btn_select {
+    color: red;
+    font-size: 1.5rem;
+}
+/*
+垂直
+*/
+.content{
+    height: 100%;
+    width: 100%;
+    margin-top:45px; 
+}
+.cell {
+    display: inline-block;
+    margin: 10px 20px;
+    width: 90%;
+    height: 200px;
+    border: #e9e9e9 solid 1px;
+    text-align: center;
+    background-color: red;
+    color: white;
+}

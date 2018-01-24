@@ -1,0 +1,51 @@
+movable-area {
+  width: 100%;
+  height: 100vh;
+}
+
+image {
+  width: 130rpx;
+  height: 130rpx;
+}
+
+movable-view image {
+  width: 130rpx;
+  height: 130rpx;
+  border: solid 2rpx red;
+}
+
+.splice-panel,
+.select-panel {
+  width: 90%;
+  margin-left: 5%;
+}
+
+.splice-panel .cell,
+.select-panel .cell {
+  width: 130rpx;
+  height: 130rpx;
+  line-height: 130rpx;
+  border: solid 2rpx #eee;
+  display: inline-block;
+  vertical-align: bottom;
+  color: #999;
+  text-align: center;
+}
+
+.splice-panel .cell.active,
+.select-panel .cell.active {
+  border: solid 2rpx red;
+}
+
+.select-panel {
+  white-space: nowrap;
+  display: flex;
+  margin-bottom: 50rpx;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+
+.select-panel .item {
+  display: inline-block;
+}

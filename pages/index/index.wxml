@@ -30,7 +30,7 @@
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
               <view class="weui-media-box__title">
                 <view class="name">{{item.name}}</view>
-                <view class="pinyin" style="margin-left: 5px;">{{item.pinyin || ''}}</view>
+                <view class="pinyin" style="margin-left: 10rpx;">{{item.pinyin || ''}}</view>
               </view>
               <view class="weui-media-box__desc">{{item.descr || ''}}</view>
             </view>

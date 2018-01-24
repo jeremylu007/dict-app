@@ -1,0 +1,20 @@
+<view class="page">
+  <view class="page__bd">
+    <movable-area>
+      <view class="splice-panel">
+        <view wx:for="{{spliceList}}" wx:key="{{index}}" data-index="{{index}}" class="{{'cell cell-' + index + (activeSpliceIndex === index ? ' active' : '')}}">
+          <image wx:if="{{item.url}}" src="{{item.url}}" data-index="{{index}}" data-item="{{item}}" bind:longpress="preMove" />
+          <text wx:else>{{index + 1}}</text>
+        </view>
+      </view>
+      <scroll-view class="select-panel" scroll-x="{{true}}">
+        <view wx:for="{{imgList}}" wx:key="{{item.url}}" data-index="{{index}}" class="{{'item scroll-view-item_H cell cell-' + index}}">
+            <image src="{{item.url}}" data-item="{{item}}" bind:longpress="preMove" />
+          </view>
+      </scroll-view>
+      <movable-view wx:if="{{selectedItem}}" direction="all" out-of-bounds="{{true}}" damping="{{50}}" bind:touchstart="moveStart" bind:touchmove="dealMove" bind:touchend="moveEnd" x="{{moveX}}" y="{{moveY}}">
+        <image src="{{selectedItem.url}}" />
+      </movable-view>
+    </movable-area>
+  </view>
+</view>

@@ -156,9 +156,9 @@
               <view wx:if="{{part.imgList.length > 0}}" class="weui-panel">
                 <view class="weui-panel__hd">{{part.title}}书</view>
                 <view class="weui-panel__bd">
-                  <view class="weui-media-box weui-media-box_text">
+                  <view class="weui-media-box weui-media-box_text" >
                     <view wx:for="{{part.imgList}}" class="item">
-                      <image src="{{ item.url }}" />
+                      <image src="{{ item.url }}"  data-item="{{item}}"  bindtap="dealImg" />
                       <text class="title">{{ item.title }}</text>
                     </view>
                   </view>
@@ -169,6 +169,10 @@
         </view>
       </view>
     </view>
+    <navigator class="chart" url="/pages/splice/splice">
+      <image src="http://static.vividict.cn/images/chart.png"></image>
+      <view class="weui-badge" style="position: absolute;top: 0;right: 0;">{{imgCount}}</view>
+    </navigator>
     <button class="contact" open-type="contact">
       <image src="http://static.vividict.cn/images/wechat_icon.png"></image>
     </button>

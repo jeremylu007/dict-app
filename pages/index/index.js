@@ -15,10 +15,6 @@ Page({
       inputShowed: true,
       prepareSearch: true,
     });
-
-    // wx.hideTabBar({
-    //   aniamtion: true
-    // })
   },
   hideInput: function () {
     this.setData({

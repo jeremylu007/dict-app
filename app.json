@@ -1,5 +1,7 @@
 {
   "pages":[
+    "pages/splice/splice",
+    "pages/test/test",
     "pages/index/index",
     "pages/detail/detail",
     "pages/logs/logs"

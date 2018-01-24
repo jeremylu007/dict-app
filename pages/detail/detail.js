@@ -6,6 +6,7 @@ Page({
     sliderWidth: 80,
     sliderOffset: 0,
     sliderLeft: 0,
+    imgCount: 0
   },
 
   onLoad: function(params) {
@@ -34,6 +35,9 @@ Page({
         });
       }
     });
+
+    var imgList = wx.getStorageSync('imgList') || []
+    this.setData({imgCount: imgList.length})
   },
 
   previewViviImg(current) {
@@ -53,6 +57,39 @@ Page({
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
       activeIndex: e.currentTarget.id
+    });
+  },
+
+  dealImg(current) {
+    var that = this
+
+    if (current && current.target) {
+      current = current.target.dataset.item
+    }
+
+    wx.showActionSheet({
+      itemList: ['添加为素材', '保存至相册'],
+      success: function (res) {
+        if (!res.cancel) {
+          if(res.tapIndex === 0) {
+            var imgList = wx.getStorageSync('imgList') || []
+            imgList.push(current)
+            wx.setStorageSync( 'imgList',  imgList)
+            wx.showToast({
+              title: '已添加',
+              icon: 'success',
+              duration: 1000
+            });
+            that.setData({ imgCount: imgList.length })
+          } else {
+            wx.showToast({
+              title: '尚未实现',
+              icon: 'success',
+              duration: 2000
+            });
+          }
+        }
+      }
     });
   }
 });

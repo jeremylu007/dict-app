@@ -4,7 +4,7 @@ page, .page, .page__bd{
 }
 
 .page__bd{
-    padding-bottom: 0;  
+    padding-bottom: 0;
 }
 
 .weui-navbar {
@@ -13,13 +13,13 @@ page, .page, .page__bd{
 
 .weui-panel:first-child,
 .weui-panel {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
 }
 
 .weui-panel__hd {
   color:#333;
-  font-size:14px;
+  font-size:28rpx;
 }
 
 .weui-media-box.weui-media-box_text {
@@ -27,34 +27,34 @@ page, .page, .page__bd{
 }
 
 .basic-info .dynamic-write {
-  width: 110px;
-  height: 110px;
+  width: 220rpx;
+  height: 220rpx;
 }
 
 .basic .basic-info .desc {
-  margin-left: 20px;
+  margin-left: 40rpx;
   color:#666666;
-  font-size:13px;
+  font-size:26rpx;
 }
 
 .basic .desc .placeholder:not(:first-child) {
-  padding-top: 3px;
+  padding-top: 6rpx;
 }
 
 .vivi .evolve image {
   width: 100%;
-  height: 70px;
+  height: 140rpx;
 }
 
 .basic .desc .text, .vivi .desc .text, .vivi .explain {
-  font-size: 13px;
+  font-size: 26rpx;
   color: #666;
 }
 
 .vivi .desc image {
-  width: 15px;
-  height: 15px;
-  margin: 0 3px;
+  width: 30rpx;
+  height: 30rpx;
+  margin: 0 6rpx;
 }
 
 .vivi .desc .weui-media-box__desc {
@@ -62,12 +62,12 @@ page, .page, .page__bd{
   text-overflow: inherit;
   display: inherit;
   line-height: inherit;
-  padding-bottom: 10px;
+  padding-bottom: 20rpx;
 }
 
 .vivi .explain {
-  border-top:1rpx solid #e5e5e5;
-  padding-top: 10px;
+  border-top:2rrpx solid #e5e5e5;
+  padding-top: 20rpx;
 }
 
 .vivi .explain .title {
@@ -75,78 +75,78 @@ page, .page, .page__bd{
 }
 
 .vivi .explain .text {
-  padding-left: 20px;
+  padding-left: 40rpx;
   display: block;
 }
 
 .vivi .detail .examples {
-  padding-left: 15px;
+  padding-left: 30rpx;
 }
 
 .vivi .detail .title {
-  padding-top: 10px;
+  padding-top: 20rpx;
   color: #666;
 }
 
 .vivi .detail .examples .example {
-  padding-top: 5px;
+  padding-top: 10rpx;
   color: #666;
 }
 
 .xiao image {
-  width: 50px;
-  height: 50px;
-  padding: 5px;
+  width: 100rpx;
+  height: 100rpx;
+  padding: 10rpx;
 }
 
 .xiao .img .part {
   display: inline-block;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-size: 14px;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  font-size: 28rpx;
 }
 
 .xiao .explain {
-  font-size: 13px;
+  font-size: 26rpx;
 }
 
 .uncle image {
-  width: 50px;
-  height: 50px;
-  padding: 5px;
+  width: 100rpx;
+  height: 100rpx;
+  padding: 10rpx;
 }
 
 .uncle image {
-  width: 50px;
-  height: 50px;
-  padding: 5px;
+  width: 100rpx;
+  height: 100rpx;
+  padding: 10rpx;
 }
 
 .zdic-calligraphy .item {
-  margin: 5px 8px;
+  margin: 10rpx 16rpx;
   float: left;
 }
 
 .zdic-calligraphy .item image {
-  width: 55px;
-  height: 61px;
-  padding: 5px;
+  width: 110rpx;
+  height: 122rpx;
+  padding: 10rpx;
   background: #eeeeee;
-  border: solid 1px #dddddd;
+  border: solid 2rpx #dddddd;
   display: block;
 }
 
 .zdic-calligraphy .item .title {
-  margin-top:5px;
+  margin-top:10rpx;
   display: block;
-  font-size: 10px;
+  font-size: 20rpx;
   text-align: center;
   color: #666666;
 }
 
 .empty-data {
-  margin-top:50px;
+  margin-top:100rpx;
   text-align:center;
-  font-size:12px;
+  font-size:24rpx;
   color:#999999;
 }

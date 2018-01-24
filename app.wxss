@@ -11,22 +11,32 @@
   background-color: #f6f8f9;
 } 
 
-.contact {
+.contact, .chart {
   position: fixed;
-  right: 5px;
-  bottom: 5px;
+  right: 10rpx;
+  bottom: 10rpx;
   background-color:initial;
   border-color:initial;
   border:none;
   line-height:initial;
   padding:0;
- }
+}
 
- .contact::after {
-   content: none;
- }
+.contact::after,
+.chart::after {
+  content: none;
+}
 
- .contact image {
-  width: 40px;
-  height: 33px;
- } 
+.contact image,
+.chart image {
+  width: 70rpx;
+  height: 56rpx;
+}
+
+.chart {
+  bottom: 120rpx;
+}
+
+.weui-navbar__title {
+  font-size: 30rpx;
+}

@@ -1,28 +1,28 @@
 .searchbar-result{
     margin-top: 0;
-    font-size: 14px;
+    font-size: 28rpx;
 }
 .searchbar-result:before{
     display: none;
 }
 .weui-cell{
-    padding: 12px;
+    padding: 24rpx;
 }
 
 .thanks {
   width: 70%;
   margin: auto;
-  margin-top: 50%;
-  font-size: 14px;
+  margin-top: 300rpx;
+  font-size: 28rpx;
 }
 
 .website-list {
-  margin-top: 10px;
+  margin-top: 20rpx;
   color: #666;
 }
 
  .website .title {
-  margin-right: 10px;
+  margin-right: 20rpx;
 }
 
 .website .title {
@@ -30,12 +30,12 @@
 }
 
 .word-list .item .name,
-  .word-list .item .pinyin {
+.word-list .item .pinyin {
   display: inline-block;
 }
 
 .word-list .item .name {
-  font-size: 20px;
+  font-size: 40rpx;
 }
 
  .word-list .item .pinyin {
