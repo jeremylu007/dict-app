@@ -15,7 +15,7 @@ Page({
     var imgList = wx.getStorageSync('imgList') || []
 
     var spliceList = []
-    for(var i=0; i<25; i++) {
+    for(var i=0; i<5; i++) {
       spliceList.push({ type: 'splice' })
     }
 
@@ -130,5 +130,52 @@ Page({
       moveX: target.pageX - this.data.half,
       moveY: target.pageY - this.data.half,
     })
+  },
+
+  mergeImages: function() {
+    var urlList = []
+
+    this.data.spliceList.forEach(function(item) {
+      if(item.url) urlList.push(item.url)
+    })
+
+    if(urlList.length === 0) {
+      wx.showToast({ title: '请至少选择一张图片' })
+      return
+    }
+
+    wx.showLoading({ title: '合成中' })
+    var that = this
+    wx.request({
+      method: 'POST',
+      url: 'https://vividict.cn/common/merge-image',
+      //url: 'http://localhost:3006/common/merge-image',
+      data: {urlList: urlList},
+      success: function (res) {
+        wx.hideLoading()
+        var url = res.data.data
+        if (!url) {
+          wx.showToast({ title: '合成失败，请点击右下角联系客服' })
+        } else {
+          wx.previewImage({
+            current: url,
+            urls: [url],
+            success: function() {
+              console.log('ok')
+            },
+            fail: function(err) {
+              console.log(err)
+            }
+          })
+        }
+      }
+    });
+  },
+
+  clear() {
+    wx.setStorageSync('imgList', [])
+    wx.showToast({ title: '已清空', icon: 'success', duration: 1000 });
+
+    this.setData({spliceList: [], imgList: []})
   }
 });

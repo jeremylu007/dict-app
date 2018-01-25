@@ -1,3 +1,8 @@
+.page {
+  width: 90%;
+  margin-left: 5%;
+}
+
 movable-area {
   width: 100%;
   height: 100vh;
@@ -12,12 +17,6 @@ movable-view image {
   width: 130rpx;
   height: 130rpx;
   border: solid 2rpx red;
-}
-
-.splice-panel,
-.select-panel {
-  width: 90%;
-  margin-left: 5%;
 }
 
 .splice-panel .cell,
@@ -35,6 +34,10 @@ movable-view image {
 .splice-panel .cell.active,
 .select-panel .cell.active {
   border: solid 2rpx red;
+}
+
+.splice-panel {
+  margin-top: 300rpx;
 }
 
 .select-panel {

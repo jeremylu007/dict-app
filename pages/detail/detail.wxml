@@ -39,6 +39,10 @@
           </view>
         </view>
         <view class="weui-tab__content vivi" hidden="{{activeIndex != 1}}">
+        <view wx:if="{{!wordInfo.viviId}}" class="empty-data">
+                <view>未收集到小学堂里的数据 :(</view>
+              </view>
+              <view wx:else>
           <view class="weui-panel evolve">
             <view class="weui-panel__hd">字形演变</view>
             <view class="weui-panel__bd">
@@ -50,10 +54,6 @@
           <view class="weui-panel desc">
             <view class="weui-panel__hd">字源解说</view>
             <view class="weui-panel__bd">
-              <view wx:if="{{!wordInfo.viviId}}" class="empty-data">
-                <view>未收集到小学堂里的数据 :(</view>
-              </view>
-              <view wx:else>
                 <view class="weui-media-box weui-media-box_text">
                   <view class="weui-media-box__desc text">
                     <block wx:for="{{wordInfo.viviInfo.desc}}">
@@ -73,7 +73,6 @@
                     </view>
                   </view>
                 </view>
-              </view>
             </view>
           </view>
           <view class="weui-panel evolve">
@@ -100,6 +99,8 @@
               </view>
             </view>
           </view>
+              </view>
+          
         </view>
         <view class="weui-tab__content xiao" hidden="{{activeIndex != 2}}">
           <view wx:if="{{wordInfo.xiaoEmpty}}" class="empty-data">
@@ -170,11 +171,11 @@
       </view>
     </view>
     <navigator class="chart" url="/pages/splice/splice">
-      <image src="http://static.vividict.cn/images/chart.png"></image>
+      <image src="https://static.vividict.cn/images/chart.png"></image>
       <view class="weui-badge" style="position: absolute;top: 0;right: 0;">{{imgCount}}</view>
     </navigator>
     <button class="contact" open-type="contact">
-      <image src="http://static.vividict.cn/images/wechat_icon.png"></image>
+      <image src="https://static.vividict.cn/images/wechat_icon.png"></image>
     </button>
   </view>
 </view>
