@@ -1,14 +1,18 @@
 Page({
   data: {
     inputShowed: false,
-    searchStr: "",
+    searchStr: '',
     searching: false,
     prepareSearch: false,
     wordList: [],
+    totalHistory: [],
+    filterHistory: [],
+    history: []
   },
   onLoad() {
-    wx.setNavigationBarTitle({title: '我要查汉字'})
-    //this.search()
+    wx.setNavigationBarTitle({ title: '我要查汉字' })
+    var totalHistory = wx.getStorageSync('searchHistory')
+    this.updateHistory(totalHistory)
   },
   showInput: function () {
     this.setData({
@@ -30,13 +34,27 @@ Page({
     });
   },
   inputTyping: function (e) {
+    var searchStr = e.detail.value
     this.setData({
-      searchStr: e.detail.value
-    }); 
+      searchStr: searchStr
+    });
+
+    if(!searchStr) {
+      this.updateHistory(this.data.totalHistory)
+      return      
+    }
+
+    var filterHistory = []
+    this.data.totalHistory.forEach(function(item) {
+      if (item.indexOf(searchStr) > -1) {
+        filterHistory.push(item)
+      }
+    })
+
+    this.updateHistory(filterHistory, true)
   },
 
-  search: function() {
-    //wx.navigateTo({ url: '/pages/detail/detail?word=' + this.data.searchStr})
+  search: function () {
     var that = this
     var searchStr = this.data.searchStr
 
@@ -62,9 +80,59 @@ Page({
         that.setData({
           searching: false,
           prepareSearch: false,
-           wordList: wordList
-          })        
+          wordList: wordList
+        })
       }
     });
+
+    var totalHistory = this.data.totalHistory || []
+    var currIndex = totalHistory.indexOf(searchStr)
+    if (currIndex > -1) {
+      totalHistory.splice(currIndex, 1)
+    }
+    totalHistory.unshift(searchStr)
+
+    this.updateHistory(totalHistory)
+  },
+
+  updateHistory(newHistory, isSearch) {
+    var newData = {
+      history: newHistory.slice(0, 6)
+    }
+    if(isSearch) {
+      newData.filterHistory = newHistory
+    } else {
+      newData.totalHistory = newHistory
+      wx.setStorageSync('searchHistory', newHistory)      
+    }
+
+    this.setData(newData)
+  },
+
+  searchFromHistory: function (e) {
+    var item = e.target.dataset.item
+
+    this.setData({
+      inputShowed: true,
+      searchStr: item,
+      prepareSearch: false,
+    })
+
+    this.search()
+  },
+
+  removeHistoryItem: function (e) {
+    var item = e.target.dataset.item
+    var index = totalHistory.indexOf(item)
+    if (index > -1) {
+      totalHistory.splice(index, 1)
+    }
+
+    this.setData({
+      totalHistory: totalHistory,
+      history: totalHistory.slice(0, 6)
+    })
+
+    wx.setStorageSync('searchHistory', totalHistory)
   }
 });

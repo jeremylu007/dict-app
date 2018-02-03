@@ -5,28 +5,44 @@ Page({
     activeSelectIndex: null,
     spliceList: [],
     imgList: [],
-    moveX: 0,
-    moveY: 0,
-    half: 37.5
+    movableView: {
+      moveX: 0,
+      moveY: 0,
+    },
+    half: 38,
+    moving: false
   },
 
   onLoad: function() {
     wx.setNavigationBarTitle({title: '图片拼接'})
     var imgList = wx.getStorageSync('imgList') || []
 
-    var spliceList = []
-    for(var i=0; i<5; i++) {
-      spliceList.push({ type: 'splice' })
+    this.setData({ imgList: imgList })
+    this.setInitSpliceList()
+  },
+
+  moveStart: function(e) {
+    console.log('move start')
+
+    var selected = e.target.dataset.item
+    var spliceList = this.data.spliceList
+
+    var target = e.touches[0]
+    if(selected.type === 'splice') {
+      var index = e.target.dataset.index
+
+      spliceList.splice(index, 1, { type: 'splice' })
     }
 
     this.setData({
-      imgList: imgList,
-      spliceList: spliceList
+      selectedItem: selected,
+      spliceList: spliceList,
+      movableView: {
+        moveX: target.pageX - this.data.half,
+        moveY: target.pageY - this.data.half,
+      },
+      moving: true,
     })
-  },
-
-  moveStart: function() {
-    console.log('move start')
 
     var that = this
 
@@ -44,22 +60,37 @@ Page({
   },
 
   dealMove: function(e) {
-    if(this.dealing) return
+    console.log('moving', this.data.moving)
+    if(!this.data.moving) return
+    if(!this.cellList) return
 
     var that = this
 
-    that.dealing = true
-    // console.log('moving', e)
     var target = e.touches[0]
 
     var x = target.pageX
     var y = target.pageY
+
+    // console.log(x, y)
+
+    that.setData({
+      movableView: {
+        moveX: x - that.data.half,
+        moveY: y - that.data.half
+      }
+    })
+
+    // return
+
     var activeSpliceIndex = null
+
+    let dragDiff = 160
+    // let dragDiff = 0
 
     for(var i=0; i<that.cellList.length; i++) {
       var cell = that.cellList[i]
 
-      if((Math.abs(x - cell.center.x) < that.data.half) && (Math.abs(y - cell.center.y) < that.data.half)) {
+      if((Math.abs(x - cell.center.x) < that.data.half) && (Math.abs(y - dragDiff - cell.center.y) < that.data.half)) {
         activeSpliceIndex = cell.dataset.index
         break;
       }
@@ -68,26 +99,22 @@ Page({
     if(that.preSpliceIndex !== activeSpliceIndex) {
       that.preSpliceIndex = activeSpliceIndex
 
-      var spliceList = that.data.spliceList
-
-      if(activeSpliceIndex !== null) {
-        var activeItem = that.data.spliceList[activeSpliceIndex]
-        if(activeItem.url) {
-          for(var j=spliceList.length; j>activeSpliceIndex; j--) {
-            spliceList[j] = spliceList[j-1]
-          }
-        }
-      }
+      // var spliceList = that.data.spliceList
+      //
+      // if(activeSpliceIndex !== null) {
+      //   var activeItem = that.data.spliceList[activeSpliceIndex]
+      //   if(activeItem.url) {
+      //     for(var j=spliceList.length; j>activeSpliceIndex; j--) {
+      //       spliceList[j] = spliceList[j-1]
+      //     }
+      //   }
+      // }
 
       that.setData({
         activeSpliceIndex: activeSpliceIndex,
-        spliceList: spliceList
+        // spliceList: spliceList,
       })
     }
-
-    setTimeout(function() {
-      that.dealing = false
-    }, 300)
   },
 
   moveEnd: function() {
@@ -109,26 +136,8 @@ Page({
       spliceList: spliceList,
       activeSpliceIndex: null,
       selectedItem: null,
-      preSpliceIndex: null
-    })
-  },
-
-  preMove: function(e) {
-    var selected = e.target.dataset.item
-    var spliceList = this.data.spliceList
-
-    var target = e.touches[0]
-    if(selected.type === 'splice') {
-      var index = e.target.dataset.index
-
-      spliceList.splice(index, 1, { type: 'splice' })
-    }
-
-    this.setData({
-      selectedItem: selected,
-      spliceList: spliceList,
-      moveX: target.pageX - this.data.half,
-      moveY: target.pageY - this.data.half,
+      preSpliceIndex: null,
+      moving: false,
     })
   },
 
@@ -145,7 +154,6 @@ Page({
     }
 
     wx.showLoading({ title: '合成中' })
-    var that = this
     wx.request({
       method: 'POST',
       url: 'https://vividict.cn/common/merge-image',
@@ -172,7 +180,30 @@ Page({
     });
   },
 
-  clear() {
+  remove(e) {
+    var index = e.target.dataset.index
+
+    var spliceList = this.data.spliceList
+
+    spliceList.splice(index, 1, { type: 'splice' })
+
+    this.setData({ spliceList: spliceList })
+  },
+
+  setInitSpliceList() {
+    var spliceList = []
+    for(var i=0; i<5; i++) {
+      spliceList.push({ type: 'splice' })
+    }
+
+    this.setData({ spliceList: spliceList })
+  },
+
+  reset() {
+    this.setInitSpliceList()
+  },
+
+  clearStorage() {
     wx.setStorageSync('imgList', [])
     wx.showToast({ title: '已清空', icon: 'success', duration: 1000 });
 

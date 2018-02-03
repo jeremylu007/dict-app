@@ -10,10 +10,14 @@
 }
 
 .thanks {
-  width: 70%;
+  width: 75%;
   margin: auto;
   margin-top: 300rpx;
-  font-size: 28rpx;
+  font-size: 24rpx;
+}
+
+.thanks .title {
+  font-size: 30rpx;
 }
 
 .website-list {
@@ -40,4 +44,16 @@
 
  .word-list .item .pinyin {
     color: #666666;
+ }
+
+ .history {
+   font-size: 28rpx;
+   color: #999999;
+ }
+
+ .empty {
+   text-align: center;
+   font-size: 24rpx;
+   color: #999999;
+   margin-top: 100rpx;
  }

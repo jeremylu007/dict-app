@@ -68,7 +68,7 @@ Page({
     }
 
     wx.showActionSheet({
-      itemList: ['添加为素材', '保存至相册'],
+      itemList: ['添加为素材', '查看原图'],
       success: function (res) {
         if (!res.cancel) {
           if(res.tapIndex === 0) {
@@ -81,12 +81,25 @@ Page({
               duration: 1000
             });
             that.setData({ imgCount: imgList.length })
-          } else {
-            wx.showToast({
-              title: '尚未实现',
-              icon: 'success',
-              duration: 2000
-            });
+          } else if (res.tapIndex === 1) {
+            if(!wx.getStorageSync('imgCheckAlert')) {
+              wx.setStorageSync('imgCheckAlert', true)
+              wx.showModal({
+                content: '由于图片透明且内容为黑色字体，所以导致在预览时看不到内容，如果想要保存，直接长按保存即可。',
+                showCancel: false,
+                success: function (res) {
+                  wx.previewImage({
+                    current: current.url,
+                    urls: [current.url]
+                  })
+                }
+              });
+            } else {
+              wx.previewImage({
+                current: current.url,
+                urls: [current.url]
+              })
+            }    
           }
         }
       }

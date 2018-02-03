@@ -4,7 +4,7 @@
       <view class="weui-search-bar__form">
         <view class="weui-search-bar__box">
           <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-          <input type="text" class="weui-search-bar__input" value="{{searchStr}}" focus="{{inputShowed}}" bindinput="inputTyping" confirm-type="search" bindconfirm="search" />
+          <input type="text" class="weui-search-bar__input" value="{{searchStr}}" focus="{{inputShowed}}" bindinput="inputTyping" confirm-type="search" bindconfirm="search" placeholder='搜索' />
           <view class="weui-icon-clear" wx:if="{{searchStr.length > 0}}" bindtap="clearInput">
             <icon type="clear" size="14"></icon>
           </view>
@@ -16,30 +16,42 @@
       </view>
       <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
     </view>
-    <view class="weui-panel weui-panel_access searchbar-result">
-      <view class="weui-panel__bd">
-        <view class="weui-loadmore" wx:if="{{searching}}">
-            <view class="weui-loading"></view>
-            <view class="weui-loadmore__tips">正在加载</view>
+    <view class="searchbar-result">
+
+        <view wx:if="{{inputShowed && prepareSearch && totalHistory.length === 0}}" class="empty">开始你的第一次搜索吧 :)</view>
+        <view class="weui-loadmore empty" wx:if="{{searching}}">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
         </view>
-        <view class="weui-loadmore weui-loadmore_line" wx:if="{{inputShowed && !prepareSearch && !searching && !wordList.length }}">
+        <view class="weui-loadmore weui-loadmore_line empty" wx:if="{{inputShowed && !prepareSearch && !searching && !wordList.length }}">
           <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
         </view>
-        <view class="word-list" wx:else>
-          <navigator wx:for="{{wordList}}" url="{{'/pages/detail/detail?id=' + item.id + '&name=' + item.name}}" class="weui-media-box weui-media-box_appmsg item" hover-class="weui-cell_active">
-            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-              <view class="weui-media-box__title">
-                <view class="name">{{item.name}}</view>
-                <view class="pinyin" style="margin-left: 10rpx;">{{item.pinyin || ''}}</view>
+
+      <view class="weui-panel weui-panel_access">
+        <view class="weui-panel__bd">
+          <view class="weui-cells weui-cells_after-title history" wx:if="{{inputShowed && prepareSearch}}">
+            <block wx:for="{{history}}">
+              <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" data-item="{{item}}" bindtap="searchFromHistory">
+                <view class="weui-cell__bd" data-item="{{item}}">{{item}}</view>
               </view>
-              <view class="weui-media-box__desc">{{item.descr || ''}}</view>
-            </view>
-          </navigator>
+            </block>
+          </view>
+          <view class="word-list" wx:else>
+            <navigator wx:for="{{wordList}}" url="{{'/pages/detail/detail?id=' + item.id + '&name=' + item.name}}" class="weui-media-box weui-media-box_appmsg item" hover-class="weui-cell_active">
+              <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                <view class="weui-media-box__title">
+                  <view class="name">{{item.name}}</view>
+                  <view class="pinyin" style="margin-left: 10rpx;">{{item.pinyin || ''}}</view>
+                </view>
+                <view class="weui-media-box__desc">{{item.descr || ''}}</view>
+              </view>
+            </navigator>
+          </view>
         </view>
       </view>
     </view>
     <view class="thanks" wx:if="{{!inputShowed}}">
-      本小程序数据来自于以下网站，特此感谢！
+      <view class="title">本小程序数据来自于以下网站，特此感谢！</view>
       <view class="website-list">
         <view class="website">
           <text class="title">象形字典</text>
@@ -64,7 +76,7 @@
       </view>
     </view>
     <button class="contact" open-type="contact">
-     <image src="https://static.vividict.cn/images/wechat_icon.png"></image>
+      <image src="https://static.vividict.cn/images/wechat_icon.png"></image>
     </button>
   </view>
 </view>
