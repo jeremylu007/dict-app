@@ -1,8 +1,8 @@
 <view class="main">
   <view class="top-operate">
-    <!--<button class="weui-btn mini-btn" type="default" size="mini" bind:tap="clear">清空</button>-->
     <button class="weui-btn mini-btn" type="default" size="mini" bind:tap="reset">重置</button>
     <button class="weui-btn mini-btn" type="primary" size="mini" bind:tap="mergeImages" style="margin: 0 20rpx;">合成</button>
+    <button class="weui-btn mini-btn right" type="warn" size="mini" bind:tap="clearStorage">清空素材库</button>
   </view>
   <view class="splice-panel">
     <view wx:for="{{spliceList}}" wx:key="{{index}}" data-index="{{index}}" class="{{'cell cell-' + index + (activeSpliceIndex === index ? ' active' : '')}}">
@@ -16,7 +16,7 @@
   <scroll-view class="select-panel" scroll-x="{{ moving ? false : true }}">
     <view wx:for="{{imgList}}" wx:key="{{item.url}}" data-index="{{index}}" class="{{'item scroll-view-item_H cell cell-' + index}}">
         <image src="{{item.url}}" data-item="{{item}}" bind:longpress="moveStart" bind:touchmove="dealMove" bind:touchend="moveEnd" />
-      </view>
+    </view>
   </scroll-view>
 
   <movable-area class="{{moving ? '' : 'none'}}">

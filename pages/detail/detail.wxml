@@ -170,12 +170,12 @@
         </view>
       </view>
     </view>
-    <navigator class="chart" url="/pages/splice/splice">
-      <image src="https://static.vividict.cn/images/chart.png"></image>
+    <navigator wx:if="{{imgCount > 0}}" class="chart" url="/pages/splice/splice">
+      <image src="http://static.vividict.cn/images/chart.png"></image>
       <view class="weui-badge" style="position: absolute;top: 0;right: 0;">{{imgCount}}</view>
     </navigator>
     <button class="contact" open-type="contact">
-      <image src="https://static.vividict.cn/images/wechat_icon.png"></image>
+      <image src="http://static.vividict.cn/images/wechat_icon.png"></image>
     </button>
   </view>
 </view>

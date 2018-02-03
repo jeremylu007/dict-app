@@ -84,7 +84,7 @@ Page({
 
     var activeSpliceIndex = null
 
-    let dragDiff = 160
+    let dragDiff = 130
     // let dragDiff = 0
 
     for(var i=0; i<that.cellList.length; i++) {
@@ -149,7 +149,7 @@ Page({
     })
 
     if(urlList.length === 0) {
-      wx.showToast({ title: '请至少选择一张图片' })
+      wx.showToast({ title: '请添加图片' })
       return
     }
 
@@ -204,9 +204,21 @@ Page({
   },
 
   clearStorage() {
-    wx.setStorageSync('imgList', [])
-    wx.showToast({ title: '已清空', icon: 'success', duration: 1000 });
+    var that = this
 
-    this.setData({spliceList: [], imgList: []})
+    wx.showModal({
+      title: '确认',
+      content: '确定要清空素材库？',
+      confirmText: "确定",
+      cancelText: "取消",
+      success: function (res) {
+        if(res.confirm) {
+          wx.setStorageSync('imgList', [])
+          wx.showToast({ title: '已清空', icon: 'success', duration: 1000 });
+
+          that.setData({spliceList: [], imgList: []})
+        }
+      }
+    });
   }
 });

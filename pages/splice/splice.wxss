@@ -14,13 +14,25 @@ image, .splice-panel .cell, .select-panel .cell {
 }
 
 movable-view image {
-  border: solid 2rpx red;
+  background-color: #fff;
+  border: solid 1px #eee;
+  box-shadow: 0 0 12px rgba(0,0,0,.2);
+}
+
+.splice-panel .cell.active {
+  box-shadow: 0 0 12px rgba(0,0,0,.2);
+  background-color: #ccc;
 }
 
 .top-operate {
+  width: 90%;
   position: fixed;
-  top: 0;
+  top: 50rpx;
   left: 5%;
+}
+
+.top-operate button {
+  margin-top: 0;
 }
 
 .splice-panel .cell,
@@ -32,18 +44,13 @@ movable-view image {
   text-align: center;
 }
 
-.splice-panel .cell.active,
-.select-panel .cell.active {
-  border: solid 2rpx red;
-}
-
 .splice-panel .cell {
   position: relative;
 }
 
 .splice-panel {
   position: fixed;
-  top: 200px;
+  top: 500rpx;
   left: 5%;
 }
 
@@ -63,13 +70,17 @@ movable-view image {
   width: 45rpx;
   height: 45rpx;
   position: absolute;
-  top: -10px;
-  left: -1px;
+  top: -20rpx;
+  left: -2rpx;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAAyBJREFUWAnNmT1sEzEUx9+7RGmqtLC1KBKlUismpgYGEoZOrBRExYjEwIBggplSZtgqJJCoxIiKqLoydSBlgGyMVEqLdCVdEDRV00ipeX9fL7pLrrk7mg9bSuLz2e/9/Gw/2y9M/5m287mpI6IbxJQTEVklHyaVhThFbDORLVlbHkoW0drERmkT7+ImkRM9/bqeH6vtHz4UpTcVqUvRW5L0g7/L12o6M7R07tPGbtS2kQB3Z2dHDup/HyumJ0rRSFThQfWYqcqKXgynzrwcW1+vBtXxloUClgtXbil19EoGbtzb8PR5rjBbDyaLXz92kiXTIzgppXgrP7NAqvGh+3DQKR0W2dABXcEUmBoB6ef81eGGXX8nDecDXne9iJlXEtnU3fMrXw5ahbdZEL3pJxyAYIhjnW0GawPcLuSe9styXmtBJ3R7y5D3EWNBYF6IT/OVtzbq1bMoFReauO1dOE0QuJL9+t6P3iyIOF3iSiY1Ou26oOYQw88NHg4dUeMOi9MpbUFnh6htntYJx7FTp7pw5ulMego7jrZgrXr4yBQ4gINFb6mSd4d4rlOPBvJO9nvoZZxKGqRkcZiXEsTTlj4ymcemicBmicfDec7MJGyYg/qQaSYhZZM4CUeBO3vvfpRqkev8WX4TWlef0suFmb0oLmayWAoVGKdCuRA+s+APLdn8BNTMBLakoO3IZzQM8ffb12FVevF+Jyl7nS0mvBgmPcqcCZMR9z3YsIpxPTQ1CaDcW02l03dqMeGaqYBgs3Dj15dqwyjBBDbMQRzwVw3jazJpQIQj4BRNgXQOrENL4NGAOLkiHGEMoLC48RtniIUMsRKxa2XwkFxxWBySJiBuUYiViHMc2NYH3WBwb3RAbALiAfdRqbSI/CASdHvvxGCQMn9C6GPr2uX3/Y4uID5z4fO3O/LrG0GfBYGKCgjkoIEfvXdP0HWs0weneU5SC0vqOA3RgrRqs/RJ7eKUi1DE3RYniqXnrZZz5YQqNjaA6fYAkxaxEpkLz7rhzPUpWWRBZuuCcHV6f0Mt6K2sQyQShZCyOaOC6F5IN9+vvyH+AeL7N2n5AUo8AAAAAElFTkSuQmCC) center center no-repeat;
-  -webkit-background-size: 18px auto;
-  background-size: 18px auto;
+  -webkit-background-size: 36rpx auto;
+  background-size: 36rpx auto;
 }
 
 .none {
   display: none !important;
+}
+
+.right {
+  float: right;
 }
