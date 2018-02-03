@@ -29,8 +29,8 @@
 
 .contact image,
 .chart image {
-  width: 70rpx;
-  height: 56rpx;
+  width: 60rpx;
+  height: 48rpx;
 }
 
 .chart {

@@ -14,7 +14,7 @@ Page({
   },
 
   onLoad: function() {
-    wx.setNavigationBarTitle({title: '图片拼接'})
+    wx.setNavigationBarTitle({title: '文字拼接'})
     var imgList = wx.getStorageSync('imgList') || []
 
     this.setData({ imgList: imgList })
