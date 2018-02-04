@@ -63,7 +63,7 @@ Page({
       wordList: []
     })
     wx.request({
-      url: 'https://vividict.cn/words/search?searchStr=' + encodeURIComponent(searchStr),
+      url: 'https://dict.jeremylu.cn/words/search?searchStr=' + encodeURIComponent(searchStr),
       //url: 'http://localhost:3006/words/search?searchStr=' + encodeURIComponent(searchStr),
       success: function (res) {
         var wordList = res.data.data

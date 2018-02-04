@@ -76,7 +76,7 @@
       </view>
     </view>
     <button class="contact" open-type="contact">
-      <image src="http://static.vividict.cn/images/wechat_icon.png"></image>
+      <image src="http://static.dict.jeremylu.cn/images/wechat_icon.png"></image>
     </button>
   </view>
 </view>

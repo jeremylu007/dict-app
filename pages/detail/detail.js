@@ -16,7 +16,7 @@ Page({
     wx.setNavigationBarTitle({ title: '“' + params.name + '”字的解释' })
     var that = this
     wx.request({
-      url: 'https://vividict.cn/words/' + params.id,
+      url: 'https://dict.jeremylu.cn/words/' + params.id,
       //url: 'http://localhost:3006/words/' + params.id,
       success: function (res) {
         wx.hideLoading()

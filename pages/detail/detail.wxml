@@ -171,11 +171,11 @@
       </view>
     </view>
     <navigator wx:if="{{imgCount > 0}}" class="chart" url="/pages/splice/splice">
-      <image src="http://static.vividict.cn/images/chart.png"></image>
+      <image src="http://static.dict.jeremylu.cn/images/chart.png"></image>
       <view class="weui-badge" style="position: absolute;top: 0;right: 0;">{{imgCount}}</view>
     </navigator>
     <button class="contact" open-type="contact">
-      <image src="http://static.vividict.cn/images/wechat_icon.png"></image>
+      <image src="http://static.dict.jeremylu.cn/images/wechat_icon.png"></image>
     </button>
   </view>
 </view>

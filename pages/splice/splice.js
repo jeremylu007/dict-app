@@ -156,7 +156,7 @@ Page({
     wx.showLoading({ title: '合成中' })
     wx.request({
       method: 'POST',
-      url: 'https://vividict.cn/common/merge-image',
+      url: 'https://dict.jeremylu.cn/common/merge-image',
       //url: 'http://localhost:3006/common/merge-image',
       data: {urlList: urlList},
       success: function (res) {
